@@ -1,0 +1,1 @@
+npm run run predev compile out build

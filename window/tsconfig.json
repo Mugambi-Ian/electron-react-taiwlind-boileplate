@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "sourceMap": false,
+    "outDir": "../temp",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": [
+    "startup.ts",
+    "app.ts",
+    "server.ts",
+    "window.ts",
+    "api/version.ts",
+    "api/handlers.ts",
+    "config/preload.ts"
+  ]
+}

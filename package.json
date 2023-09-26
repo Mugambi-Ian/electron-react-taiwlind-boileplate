@@ -1,0 +1,144 @@
+{
+  "name": "prolox-sales",
+  "displayName": "Prolox Sales",
+  "version": "2.0.0-beta",
+  "private": true,
+  "homepage": "./",
+  "main": "./out/startup.js",
+  "build": {
+    "productName": "Prolox Sales",
+    "appId": "com.prolox.sales",
+    "win": {
+      "target": "nsis",
+      "icon": "./out/build/favicon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "./out/build/android-chrome-512x512.png"
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "extends": null,
+    "files": [
+      "./out/build/*",
+      "./out/build/**/*",
+      "./out/build/**/**/*",
+      "./out/build/**/**/**/*",
+      "./out/startup.js",
+      "./out/package.json",
+      "./out/app/server.js",
+      "./out/app/window.js",
+      "./out/app/service.js",
+      "./out/api/version.js",
+      "./out/api/handlers.js",
+      "./out/config/preload.js",
+      {
+        "from": "./out",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "author": "Ian Mugambi",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "clsx": "^2.0.0",
+    "electron-is-dev": "^2.0.0",
+    "express": "^4.18.2",
+    "firebase": "9.22.1",
+    "lottie-react": "^2.4.0",
+    "react": "^18.2.0",
+    "react-datepicker": "^4.16.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "run": "run-s",
+    "mv": "move-cli",
+    "rimraf": "rimraf",
+    "clean": "npx rimraf out",
+    "out": "run-s out-1 out-2 out-3",
+    "out-1": "npm run mv ./temp/window ./out",
+    "out-2": "npm run mv ./temp/package.json ./out/package.json",
+    "out-3": "npm run rimraf temp",
+    "test": "craco test",
+    "eject": "craco eject",
+    "prebuild": "npm run rimraf out/build",
+    "build": "craco build",
+    "postbuild": "npm run mv ./build ./out/build",
+    "compile": "tsc -p ./window/tsconfig.json",
+    "start": "cross-env BROWSER=none craco start",
+    "develop": "run-p start serve",
+    "serve": "electron ./out/startup.js",
+    "export": "./scripts/distribute.bat",
+    "dist-all": "run-s export build-all",
+    "build-all": "electron-builder -mwl",
+    "dist-win": "run-s export build-win",
+    "build-win": "electron-builder --win --ia32",
+    "predev": "run-s  clean out-3",
+    "dev": "tsc-watch --noClear -p ./window/tsconfig.json --onSuccess \"./scripts/develop.bat\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@craco/craco": "^7.1.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.38",
+    "@types/react": "^18.2.14",
+    "@types/react-datepicker": "^4.15.0",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "cross-env": "^7.0.3",
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.3",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jest-dom": "^4.0.3",
+    "eslint-plugin-jest-formatting": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-tailwindcss": "^3.11.0",
+    "eslint-plugin-testing-library": "^5.10.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "move-cli": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.8",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.3.2",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.9.5"
+  }
+}
