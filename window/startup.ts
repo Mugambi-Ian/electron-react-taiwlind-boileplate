@@ -1,6 +1,7 @@
 import { resolve } from 'dns';
 import { app, dialog } from 'electron';
-import { createTray, startApp } from './app/service';
+import { createWindow } from './app/window';
+import { createTray } from './app/service';
 import * as config from '../package.json';
 
 app.whenReady().then(async () => {
@@ -15,7 +16,7 @@ app.whenReady().then(async () => {
         })
         .then(() => app.exit());
     } else {
-      await startApp();
+      await createWindow();
     }
   });
 });

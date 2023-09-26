@@ -1,12 +1,12 @@
 {
   "name": "prolox-sales",
-  "displayName": "Prolox Sales",
+  "displayName": "Electron React Boilerplate",
   "version": "2.0.0-beta",
   "private": true,
   "homepage": "./",
   "main": "./out/startup.js",
   "build": {
-    "productName": "Prolox Sales",
+    "productName": "Electron React Boilerplate",
     "appId": "com.prolox.sales",
     "win": {
       "target": "nsis",
